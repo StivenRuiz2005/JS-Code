@@ -22,6 +22,14 @@ Los requisitos funcionales se presentan en forma de **historias de usuario**, es
 | **US-07** | Como usuario, deseo poder realizar el pago por los productos de mi carrito. | - El sistema debe permitir el pago con tarjeta de crédito, débito o billetera digital.<br>- Se debe generar una confirmación de pago tras una transacción exitosa. |
 | **US-08** | Como usuario, deseo realizar seguimiento a mi orden de compra. | - El usuario debe poder visualizar el estado de su orden en tiempo real.<br>- Se deben mostrar actualizaciones de ubicación cuando el pedido esté en entrega. |
 | **US-09** | Como usuario, deseo poder cancelar mi orden de compra. | - El usuario puede cancelar la orden antes de que sea enviada.<br>- Se debe mostrar una confirmación antes de proceder con la cancelación. |
+| **US-10** | Como usuario, deseo poder realizar la devolución de mi pedido. | - El usuario puede solicitar una devolución dentro de un período determinado.<br>- Se debe generar una etiqueta de devolución con instrucciones. |
+| **US-11** | Como usuario, deseo poder eliminar mi cuenta. | - El usuario debe confirmar su decisión antes de eliminar la cuenta.<br>- Se debe eliminar toda la información personal del usuario. |
+| **US-12** | Como usuario, deseo recibir una notificación cuando se genere mi orden de compra. | - El usuario recibe una notificación por correo y en la app al realizar una compra. |
+| **US-13** | Como usuario, deseo recibir una notificación cuando se cancele una orden de compra. | - Se debe enviar una notificación inmediata cuando una orden es cancelada. |
+| **US-14** | Como usuario, deseo recibir una notificación cuando se genere mi orden de devolución. | - Se debe notificar al usuario cuando la solicitud de devolución sea procesada. |
+| **US-15** | Como usuario, deseo poder filtrar los productos por categorías o búsqueda. | - El sistema debe permitir la búsqueda por palabras clave y filtrar por categorías. |
+| **US-16** | Como usuario, deseo recibir una notificación cuando se agote un producto de mi carrito. | - Si un producto en el carrito queda sin stock, el usuario recibe una alerta. |
+| **US-17** | Como usuario, deseo poder cambiar mi método de pago. | - El usuario puede modificar su método de pago antes de completar la compra. |
 
 ## 3. Requisitos de Calidad  
 Los requisitos de calidad del proyecto se presentan a continuación en forma de **historias de calidad**, siguiendo la estructura de Len Bass.
