@@ -2,7 +2,7 @@
 Este documento describe la arquitectura inicial del sistema de gestión de órdenes y entregas, incluyendo requisitos funcionales, requisitos de calidad y restricciones clave que deben ser consideradas en el diseño del software.
 
 **Equipo:** _JS Code_  
-**Integrantes:** _Juan Camilo Diaz Valencia, Jhony Fernando Duque Villada, Jairo Andrés Gomez Cardona, Carlos Stiven Ruiz Rojas_
+**Integrantes:** _Juan Camilo Diaz Valencia, Jhony Fernando Duque Villada, Jairo Andrés Gomez Cardona, Carlos Stiven Ruiz Rojas, Juan David Rojas Narvaez_
 **Fecha:** _[07/03/2025]_  
 
 ---
@@ -70,3 +70,16 @@ Los requisitos de calidad del proyecto se presentan a continuación en forma de 
 
 
 ### **Lista de Restricciones**
+
+| **Tipo de Restricción** | **Descripción** |
+|------------------------|----------------|
+| **Tecnológica** | El sistema debe desarrollarse utilizando **Spring Boot y PostgreSQL**, debido a la infraestructura actual de la empresa y su compatibilidad con otros sistemas internos. |
+| **Tecnológica** | Se debe utilizar **Kubernetes** para la gestión y escalabilidad de los microservicios. |
+| **Tecnológica** | La comunicación entre microservicios debe realizarse mediante **RabbitMQ o Kafka** para garantizar la entrega de mensajes sin pérdida ni duplicación. |
+| **Tecnológica** | La autenticación debe implementarse con **OAuth2 y JWT**, sin permitir otros métodos no especificados. |
+| **Regulatoria** | El sistema debe cumplir con la **Ley 1581 de 2012 y el Decreto 1377 de 2013**, asegurando la protección y privacidad de los datos personales de los usuarios. |
+| **Regulatoria** | Toda la información personal debe encriptarse y almacenarse de manera segura, con controles de acceso estrictos. |
+| **Infraestructura** | El sistema debe garantizar **alta disponibilidad**, con balanceo de carga y recuperación ante fallos. |
+| **Infraestructura** | Se debe implementar **Prometheus y Grafana** para el monitoreo de rendimiento y detección de fallos en tiempo real. |
+| **Negocio** | Los permisos de acceso están restringidos a **clientes, administradores y repartidores**, asegurando que cada usuario tenga acceso solo a sus funcionalidades correspondientes. |
+
