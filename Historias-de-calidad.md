@@ -31,6 +31,26 @@ Los requisitos funcionales se presentan en forma de **historias de usuario**, es
 | **US-16** | Como usuario, deseo recibir una notificación cuando se agote un producto de mi carrito. | - Si un producto en el carrito queda sin stock, el usuario recibe una alerta. |
 | **US-17** | Como usuario, deseo poder cambiar mi método de pago. | - El usuario puede modificar su método de pago antes de completar la compra. |
 
+#### **Administrador**
+
+| **ID** | **Historia de Usuario** | **Criterios de Aceptación** |
+| ------ | ---------------------- | -------------------------- |
+| **US-A1** | Como administrador, deseo crear productos nuevos para su venta en la app. | - El administrador puede agregar productos con nombre, descripción, precio e imagen. |
+| **US-A2** | Como administrador, deseo poder editar la información de los productos disponibles para su compra. | - Se debe permitir la modificación de los detalles del producto. |
+| **US-A3** | Como administrador, deseo poder eliminar un producto de la app. | - Solo los productos sin pedidos pendientes pueden eliminarse. |
+| **US-A4** | Como administrador, deseo recibir notificaciones cuando un producto alcance stock bajo. | - Se debe generar una alerta cuando el stock sea menor a un umbral definido. |
+
+#### **Repartidor**
+
+| **ID** | **Historia de Usuario** | **Criterios de Aceptación** |
+| ------ | ---------------------- | -------------------------- |
+| **US-R1** | Como repartidor, deseo recibir una notificación cuando se genera una orden de entrega. | - Se debe enviar una notificación cuando haya una nueva asignación de entrega. |
+| **US-R2** | Como repartidor, deseo poder visualizar las órdenes de entrega asignadas. | - El repartidor puede ver un listado de órdenes pendientes y en curso. |
+| **US-R3** | Como repartidor, deseo poder cambiar el estado de una entrega. | - Se debe permitir cambiar el estado a "En camino" y "Entregado". |
+| **US-R4** | Como repartidor, deseo poder cambiar mi estado de disponibilidad. | - Se debe permitir activar o desactivar la disponibilidad del repartidor. |
+| **US-R5** | Como repartidor, deseo poder escoger entre aceptar una orden de entrega o rechazarla. | - Se debe permitir rechazar órdenes con un motivo válido. |
+
+
 ## 3. Requisitos de Calidad  
 Los requisitos de calidad del proyecto se presentan a continuación en forma de **historias de calidad**, siguiendo la estructura de Len Bass.
 
@@ -41,5 +61,12 @@ Los requisitos de calidad del proyecto se presentan a continuación en forma de 
 | **RQ-02** | _Administrador del Sistema_ | _Un servicio de microservicio deja de responder debido a una sobrecarga de solicitudes._ | _Sistema de monitoreo, balanceador de carga._ | _Pico de carga en el sistema._ | _Se debe escalar automáticamente la cantidad de instancias del microservicio afectado._ | _La latencia del servicio no debe superar los 500ms en el 95% de las solicitudes y el sistema debe escalar en menos de 5 segundos_ |
 | **RQ-03** | _Equipo de seguridad_ | _Se detecta un intento de acceso no autorizado a un microservicio._ | _Autenticación_ | _Ataque en curso o intento de intrusión_ | _Se debe registrar el intento, bloquear la IP y notificar al equipo de seguridad._ | _El intento de acceso debe registrarse en menos de 5 segundos, la IP debe ser bloqueada en menos de 10 segundos._ |
 | **RQ-04** | _Usuario Final_ | _La respuesta de consulta de órdenes tarda demasiado en procesarse._ | _API de órdenes, base de datos._ | _Consulta con gran cantidad de datos._ | _Se debe optimizar la consulta._ | _El tiempo de respuesta no debe superar los 300 ms en el 95% de las consultas._ |
+| **RQ-05** | Administrador | Se requiere garantizar la trazabilidad de las órdenes de compra y devolución. | Sistema de logs y auditoría de pedidos. | Operación normal del sistema. | Se debe registrar cada cambio de estado de las órdenes y garantizar su disponibilidad en reportes. | Los logs deben almacenarse por **6 meses** y ser accesibles en **menos de 3 segundos** en consultas de historial. |
+| **RQ-06** | Repartidor | La actualización de estado de una entrega debe reflejarse en tiempo real. | API de entregas, WebSockets. | Comunicación en tiempo real. | Se debe garantizar la sincronización instantánea entre el repartidor y el sistema. | Los cambios de estado deben reflejarse en **menos de 2 segundos** tras su actualización. |
+| **RQ-07** | Administrador del sistema | Se requiere auditar las acciones realizadas por los administradores en el inventario. | Sistema de control de cambios. | Mantenimiento de productos. | Cada modificación en el inventario debe quedar registrada con usuario, fecha y cambio realizado. | El historial debe mostrar cambios en **menos de 2 segundos** al consultar. |
+| **RQ-08** | Cliente | Se debe garantizar la privacidad de datos personales de los usuarios. | Sistema de autenticación y permisos. | Cualquier acceso no autorizado. | Se debe evitar la exposición de datos sensibles y permitir la eliminación de cuenta bajo solicitud. | Ningún usuario sin permisos debe acceder a información ajena. **Eliminación de datos en menos de 24 horas tras solicitud.** |
+| **RQ-09** | Administrador | Se requiere asegurar que las notificaciones de stock bajo lleguen sin retraso. | Servicio de notificaciones y eventos. | Pedido cercano a agotarse. | La notificación debe generarse de inmediato y ser enviada al administrador. | La alerta debe emitirse en **menos de 5 segundos** tras detectar stock bajo. |
+| **RQ-10** | Cliente | Se requiere que el proceso de pago no se interrumpa ante una caída del servicio. | API de pagos y sistema de respaldo. | Falla del servicio de pago. | Se debe garantizar un mecanismo de reintento y recuperación automática. | Si el pago falla, debe reintentarse hasta **3 veces** antes de cancelarse. |
+
 
 ### **Lista de Restricciones**
